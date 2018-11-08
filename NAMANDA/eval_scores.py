@@ -13,7 +13,7 @@ dataset = load_dict('data/datasets/newsqa/newsqa-combined-orig-nil-data/test_nil
 orig_dataset = load_dict('data/datasets/newsqa/NewsQA-v1.1-test.json.configd')
 
 pred = load_dict(sys.argv[1])
-for key in pred.keys():
+for key in list(pred.keys()):
     if 'NIL' in pred[key]:
         pred[key] = "NIL"
 
