@@ -6,7 +6,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# Index of arguments concerning the core model architecture
+# Arguments for model architecture
 MODEL_ARCHITECTURE = {
     'model_type', 'embedding_dim', 'hidden_size', 'num_factor', 'doc_layers',
     'question_layers', 'rnn_type', 'concat_rnn_layers', 'question_merge',
@@ -14,7 +14,7 @@ MODEL_ARCHITECTURE = {
     'char_embedding', 'char_embeddim', 'maxwordlen', 'shared'
 }
 
-# Index of arguments concerning the model optimizer/training
+# Arguments for the model optimizer/training
 MODEL_OPTIMIZER = {
     'fix_embeddings', 'optimizer', 'learning_rate', 'momentum', 'weight_decay',
     'rho', 'eps',

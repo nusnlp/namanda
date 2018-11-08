@@ -236,7 +236,7 @@ class ReaderDataset(Dataset):
 
 
 # ------------------------------------------------------------------------------
-# PyTorch sampler returning batched of sorted lengths (by doc and question).
+# PyTorch sampler returning batched of sorted lengths (by passage and question).
 # ------------------------------------------------------------------------------
 
 
