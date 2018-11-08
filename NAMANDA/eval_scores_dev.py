@@ -16,16 +16,16 @@ for key in pred.keys():
     if 'NIL' in pred[key]:
         pred[key] = "NIL"
 
-print "=" * 50
-print "On non-nil data (w/o NIL)"
+print("=" * 50)
+print("On non-nil data (w/o NIL)")
 print(Evaluator.evaluate(orig_dataset['data'], pred))
-print "=" * 50
+print("=" * 50)
 
 corr_nil = 0.0
 pred_nil = 0.0
 total_nil = 0
 
-for key in pred.keys():
+for key in list(pred.keys()):
     if 'NONE' in key:
         total_nil += 1
         if 'NIL' in pred[key]:
@@ -35,10 +35,10 @@ for key in pred.keys():
 
 nilp = corr_nil / pred_nil
 nilr = corr_nil / total_nil
-print "NIL prec:", corr_nil / pred_nil
-print "NIL recl:", corr_nil / total_nil
-print "NIL F1:", 2 * nilp * nilr / (nilp + nilr)
-print "=" * 50
-print "Overall scores:"
+print("NIL prec:", corr_nil / pred_nil)
+print("NIL recl:", corr_nil / total_nil)
+print("NIL F1:", 2 * nilp * nilr / (nilp + nilr))
+print("=" * 50)
+print("Overall scores:")
 print(Evaluator.evaluate(dataset['data'], pred))
-print "=" * 50
+print("=" * 50)
