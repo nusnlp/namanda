@@ -94,6 +94,9 @@ class RnnDocReader(nn.Module):
         # nil linear
         self.nil_linear = layers.LinearLayerSeq(2*doc_hidden_size,
                                                 doc_hidden_size)
+        if not self.args.shared:
+            self.nil_linear_ortho = layers.LinearLayerSeq(2*doc_hidden_size,
+                                                doc_hidden_size)
 
         # rnn for answer starting pointer
         self.ans_start_rnn = layers.StackedBRNN(
@@ -208,7 +211,10 @@ class RnnDocReader(nn.Module):
                                                        gated_qaware_passage_rep)
         # mfa_nil_conv_in = torch.cat([mfa_enc_plus, mfa_enc_minus], 2)
         mfa_nil_linear_plus = self.nil_linear(mfa_enc_plus)
-        mfa_nil_linear_minus = self.nil_linear(mfa_enc_minus)
+        if not self.args.shared:
+            mfa_nil_linear_minus = self.nil_linear_ortho(mfa_enc_minus)
+        else:
+            mfa_nil_linear_minus = self.nil_linear(mfa_enc_minus)
         mfa_nil_lin_comb = torch.add(mfa_nil_linear_plus, mfa_nil_linear_minus)
         mfa_nil_conv, _ = torch.max(mfa_nil_lin_comb, 1)
         mfa_nil_conv = mfa_nil_conv.unsqueeze(1)
