@@ -11,7 +11,7 @@ MODEL_ARCHITECTURE = {
     'model_type', 'embedding_dim', 'hidden_size', 'num_factor', 'doc_layers',
     'question_layers', 'rnn_type', 'concat_rnn_layers', 'question_merge',
     'use_qemb', 'use_in_question', 'use_pos', 'use_ner', 'use_lemma', 'use_tf',
-    'char_embedding', 'char_embeddim', 'maxwordlen'
+    'char_embedding', 'char_embeddim', 'maxwordlen', 'shared'
 }
 
 # Index of arguments concerning the model optimizer/training
@@ -38,6 +38,8 @@ def add_model_args(parser):
                        help='Embedding size if embedding_file is not given')
     model.add_argument('--hidden-size', type=int, default=150,
                        help='Hidden size of RNN units')
+    model.add_argument('--shared', type=bool, default=True,
+                       help='Share weights for nil parallel and orthogonal')
     model.add_argument('--num-factor', type=int, default=4,
                        help='Number of factors to be considered for Multi-factor attentive encoding')
     model.add_argument('--doc-layers', type=int, default=1,

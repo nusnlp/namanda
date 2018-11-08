@@ -94,7 +94,7 @@ class RnnDocReader(nn.Module):
         # nil linear
         self.nil_linear = layers.LinearLayerSeq(2*doc_hidden_size,
                                                 doc_hidden_size)
-        if not self.args.shared:
+        if not args.shared:
             self.nil_linear_ortho = layers.LinearLayerSeq(2*doc_hidden_size,
                                                 doc_hidden_size)
 
